@@ -1,11 +1,11 @@
-package main //import github.com/oshankkumar/preetyjson
+package main //import github.com/oshankkumar/prettyjson
 
 import (
 	"log"
 )
 
 func main() {
-	if err := NewPreetyJsonCmd().Execute(); err != nil {
+	if err := NewPrettyJsonCmd().Execute(); err != nil {
 		log.Fatal(err)
 	}
 }

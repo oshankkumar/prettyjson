@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	PreetyJsonVersion = ""
+	PrettyJsonVersion = ""
 	GitSHA            = ""
 )
 
@@ -16,5 +16,5 @@ git SHA: %s
 go version: %s
 go OS/arch: %s/%s`
 
-	return fmt.Sprintf(version, PreetyJsonVersion, GitSHA, runtime.Version(), runtime.GOOS, runtime.GOARCH)
+	return fmt.Sprintf(version, PrettyJsonVersion, GitSHA, runtime.Version(), runtime.GOOS, runtime.GOARCH)
 }

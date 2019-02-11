@@ -12,7 +12,7 @@
 *.out
 
 # binary
-preetyjson
+prettyjson
 
 # ide file
 .idea

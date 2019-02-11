@@ -5,42 +5,42 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/oshankkumar/preetyjson/version"
+	"github.com/oshankkumar/prettyjson/version"
 
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 )
 
 const desc = `    
-    preetyjson is a tool for processing JSON inputs, applying the
+    prettyjson is a tool for processing JSON inputs, applying the
     given filter to its JSON text inputs and producing the
     filter's results as JSON on standard output.`
 
 const example = `
     # format json input from a file source
-    preetyjson -f inputFile.json 
+    prettyjson -f inputFile.json 
  
     # format json input and use tabs for indentation
-    preetyjson -f inputFile.json -i
+    prettyjson -f inputFile.json -i
 
     # format json input in bold format
-    preetyjson -f inputFile.json -F bold
+    prettyjson -f inputFile.json -F bold
    
     # format json input in bold and italic format
-    preetyjson -f inputFile.json -F bold,italic		
+    prettyjson -f inputFile.json -F bold,italic		
 
     # format based on the JSON passed into stdin.
-    cat inputFile.json | preetyjson
-    curl -XGET http://ip:port/url/path | preetyjson
+    cat inputFile.json | prettyjson
+    curl -XGET http://ip:port/url/path | prettyjson
 `
 
-func NewPreetyJsonCmd() *cobra.Command {
-	opts := &PreetyJsonRunOptions{}
+func NewPrettyJsonCmd() *cobra.Command {
+	opts := &PrettyJsonRunOptions{}
 	cmd := &cobra.Command{
-		Use:     "preetyjson",
+		Use:     "prettyjson",
 		Short:   "",
 		Long:    desc,
-		RunE:    opts.RunPreety,
+		RunE:    opts.RunPretty,
 		Example: example,
 		Version: version.Version(),
 	}
@@ -54,7 +54,7 @@ func NewPreetyJsonCmd() *cobra.Command {
 	return cmd
 }
 
-type PreetyJsonRunOptions struct {
+type PrettyJsonRunOptions struct {
 	compact  bool
 	fileName string
 	colorize bool
@@ -63,7 +63,7 @@ type PreetyJsonRunOptions struct {
 	formats  []string
 }
 
-func (p *PreetyJsonRunOptions) GetAttr() []color.Attribute {
+func (p *PrettyJsonRunOptions) GetAttr() []color.Attribute {
 	var attrs []color.Attribute
 
 	for _, format := range p.formats {
@@ -86,7 +86,7 @@ func (p *PreetyJsonRunOptions) GetAttr() []color.Attribute {
 	return attrs
 }
 
-func (p *PreetyJsonRunOptions) InputBody(cmd *cobra.Command, args []string) (body []byte, err error) {
+func (p *PrettyJsonRunOptions) InputBody(cmd *cobra.Command, args []string) (body []byte, err error) {
 	reader := os.Stdin
 	if p.fileName != "" {
 		if reader, err = os.Open(p.fileName); err != nil {
@@ -97,7 +97,7 @@ func (p *PreetyJsonRunOptions) InputBody(cmd *cobra.Command, args []string) (bod
 	return ioutil.ReadAll(reader)
 }
 
-func (p *PreetyJsonRunOptions) RunPreety(cmd *cobra.Command, args []string) error {
+func (p *PrettyJsonRunOptions) RunPretty(cmd *cobra.Command, args []string) error {
 
 	body, err := p.InputBody(cmd, args)
 	if err != nil {

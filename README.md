@@ -3,7 +3,7 @@
  given filter to its JSON text inputs and producing the
  filter's results as JSON on standard output.
 
-##usage
+## usage
 ```
     # format json input from a file source
     preetyjson -f inputFile.json 
@@ -22,7 +22,7 @@
     curl -XGET http://ip:port/url/path | preetyjson`
 ```
 
-##install
+## install
 ```
 wget https://github.com/oshankkumar/preetyjson/releases/download/v0.1.0/preetyjson -O /usr/local/bin/preetyjson
 

@@ -16,3 +16,9 @@ preetyjson
 
 # ide file
 .idea
+
+# ignore vendor
+vendor
+
+# ignore go.sum of go modules
+go.sum

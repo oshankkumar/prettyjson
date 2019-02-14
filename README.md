@@ -24,7 +24,7 @@
 
 ## install
 ```
-wget https://github.com/oshankkumar/prettyjson/releases/download/v0.1.0/prettyjson -O /usr/local/bin/prettyjson
+sudo wget https://github.com/oshankkumar/prettyjson/releases/download/v0.1.0/prettyjson -O /usr/local/bin/prettyjson
 
-chmod +x /usr/local/bin/prettyjson 
+sudo chmod +x /usr/local/bin/prettyjson 
 ```
